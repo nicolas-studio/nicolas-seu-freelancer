@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Freelancer | Portfólio & Mini App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --accent: #22d3ee;
+            --bg: #0f172a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .service-card:active {
+            transform: scale(0.95);
+        }
+
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.4;
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: translate(0, 0); }
+            to { transform: translate(20px, 40px); }
+        }
+
+        /* Hide scrollbar */
+        ::-webkit-scrollbar { width: 0px; }
+        
+        .section-animate {
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="pb-24">
+
+    <!-- Blobs de Fundo -->
+    <div class="blob top-[-100px] left-[-100px]"></div>
+    <div class="blob bottom-[100px] right-[-100px]" style="background: var(--accent);"></div>
+
+    <!-- Header / Status Bar Style -->
+    <header class="p-6 flex justify-between items-center sticky top-0 z-50 glass mb-4">
+        <div>
+            <h1 class="text-xl font-extrabold tracking-tight">NICOLAS<span class="text-indigo-500">.</span></h1>
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Disponível para Freelance</p>
+        </div>
+        <div class="flex gap-3">
+            <a href="https://wa.me/5511964482658" class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-semibold border border-green-500/30 flex items-center gap-2">
+                <i class="fab fa-whatsapp"></i> Online
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="app-content" class="px-5 space-y-8">
+        
+        <!-- Home Screen -->
+        <section id="home" class="section-animate">
+            <div class="rounded-3xl overflow-hidden relative p-8 glass border-indigo-500/30">
+                <h2 class="text-4xl font-extrabold leading-tight mb-4">
+                    Transformo ideias em <span class="gradient-text">Impacto Visual.</span>
+                </h2>
+                <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                    Artes para posts, edição de vídeos, landing pages e soluções digitais com preço justo e qualidade profissional.
+                </p>
+                <div class="flex gap-3">
+                    <button onclick="navigate('services')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-500/20">
+                        Ver Serviços
+                    </button>
+                    <button onclick="navigate('prices')" class="glass px-6 py-3 rounded-2xl font-bold border border-white/10">
+                        Preços
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Mini -->
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div class="glass p-4 rounded-2xl text-center">
+                    <span class="block text-2xl font-bold gradient-text">100%</span>
+                    <span class="text-[10px] text-gray-400 uppercase">Foco no Cliente</span>
+                </div>
+                <div class="glass p-4 rounded-2xl text-center">
+                    <span class="block text-2xl font-bold gradient-text">24h</span>
+                    <span class="text-[10px] text-gray-400 uppercase">Suporte Rápido</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Screen (Hidden by default in JS logic if needed, but here simple flow) -->
+        <section id="services" class="space-y-4">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+                <i class="fas fa-th-large text-indigo-500"></i> O que eu faço
+            </h3>
+            
+            <!-- Service Grid -->
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Artes & Social Media -->
+                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Artes para Posts</h4>
+                        <p class="text-sm text-gray-400 mb-2">Designs criativos para Instagram, Facebook e LinkedIn.</p>
+                        <span class="text-xs font-bold text-indigo-400">A partir de R$ 25,00</span>
+                    </div>
+                </div>
+
+                <!-- Edição de Vídeo -->
+                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Edição de Vídeos</h4>
+                        <p class="text-sm text-gray-400 mb-2">Cortes para Reels, TikTok, YouTube e vídeos curtos.</p>
+                        <span class="text-xs font-bold text-purple-400">A partir de R$ 45,00</span>
+                    </div>
+                </div>
+
+                <!-- Landing Pages -->
+                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Landing Pages / Mini Apps</h4>
+                        <p class="text-sm text-gray-400 mb-2">Páginas de vendas ou apps web modernos em HTML/CSS.</p>
+                        <span class="text-xs font-bold text-cyan-400">A partir de R$ 150,00</span>
+                    </div>
+                </div>
+
+                <!-- Cardápios -->
+                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Cardápios Online</h4>
+                        <p class="text-sm text-gray-400 mb-2">Cardápios interativos e digitais para seu negócio.</p>
+                        <span class="text-xs font-bold text-orange-400">A partir de R$ 80,00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="prices" class="space-y-6 pt-4">
+            <h3 class="text-xl font-bold flex items-center gap-2">
+                <i class="fas fa-tags text-indigo-500"></i> Tabela de Preços (Acessíveis)
+            </h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center p-4 glass rounded-2xl">
+                    <span class="text-gray-300">Pack 5 Artes Social Media</span>
+                    <span class="font-bold text-green-400">R$ 100,00</span>
+                </div>
+                <div class="flex justify-between items-center p-4 glass rounded-2xl">
+                    <span class="text-gray-300">Edição de Vídeo (até 1min)</span>
+                    <span class="font-bold text-green-400">R$ 50,00</span>
+                </div>
+                <div class="flex justify-between items-center p-4 glass rounded-2xl">
+                    <span class="text-gray-300">Página Única (Landing Page)</span>
+                    <span class="font-bold text-green-400">R$ 180,00</span>
+                </div>
+                <div class="flex justify-between items-center p-4 glass rounded-2xl">
+                    <span class="text-gray-300">Tratamento de Imagem (Un)</span>
+                    <span class="font-bold text-green-400">R$ 15,00</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="pb-10">
+            <div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-8 rounded-[2.5rem] text-center shadow-2xl shadow-indigo-500/40">
+                <h3 class="text-2xl font-bold mb-2">Bora fechar um projeto?</h3>
+                <p class="text-white/80 text-sm mb-6">Resposta em menos de 30 minutos via WhatsApp.</p>
+                <a href="https://wa.me/5511964482658" class="bg-white text-indigo-600 px-8 py-4 rounded-2xl font-extrabold flex items-center justify-center gap-2 mx-auto hover:scale-105 transition-transform">
+                    <i class="fab fa-whatsapp text-xl"></i> CHAMAR NO WHATS
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Navigation Bar (Mini App Style) -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md glass border-white/10 rounded-3xl p-2 z-[100] flex justify-around items-center shadow-2xl">
+        <button onclick="navigate('home')" id="nav-home" class="nav-item active flex flex-col items-center justify-center w-16 h-14 rounded-2xl transition-all">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-[10px] mt-1 font-semibold">Home</span>
+        </button>
+        <button onclick="navigate('services')" id="nav-services" class="nav-item flex flex-col items-center justify-center w-16 h-14 rounded-2xl transition-all text-gray-400">
+            <i class="fas fa-layer-group text-lg"></i>
+            <span class="text-[10px] mt-1 font-semibold">Serviços</span>
+        </button>
+        <button onclick="navigate('prices')" id="nav-prices" class="nav-item flex flex-col items-center justify-center w-16 h-14 rounded-2xl transition-all text-gray-400">
+            <i class="fas fa-receipt text-lg"></i>
+            <span class="text-[10px] mt-1 font-semibold">Preços</span>
+        </button>
+        <button onclick="window.open('https://wa.me/5511964482658')" class="flex flex-col items-center justify-center w-16 h-14 rounded-2xl text-green-400">
+            <i class="fab fa-whatsapp text-xl"></i>
+            <span class="text-[10px] mt-1 font-semibold">Contato</span>
+        </button>
+    </nav>
+
+    <script>
+        function navigate(sectionId) {
+            // Smooth Scroll
+            const element = document.getElementById(sectionId);
+            const offset = 100;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            // Update Nav State
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active', 'text-indigo-500');
+                item.classList.add('text-gray-400');
+            });
+
+            const activeNav = document.getElementById('nav-' + sectionId);
+            if (activeNav) {
+                activeNav.classList.add('active');
+                activeNav.classList.remove('text-gray-400');
+            }
+        }
+
+        // Detect scroll to update nav
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'services', 'prices'];
+            let current = '';
+
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const rect = element.getBoundingClientRect();
+                if (rect.top <= 150) {
+                    current = section;
+                }
+            });
+
+            if (current) {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.classList.add('text-gray-400');
+                });
+                const activeNav = document.getElementById('nav-' + current);
+                if (activeNav) {
+                    activeNav.classList.add('active');
+                    activeNav.classList.remove('text-gray-400');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
