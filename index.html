@@ -3,217 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolas Seu Freelancer | Portfólio </title>
+    <title>Nicolas | Soluções Digitais</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --secondary: #a855f7;
-            --accent: #22d3ee;
-            --bg: #0f172a;
+            --primary: #6366f1; /* Indigo */
+            --secondary: #a855f7; /* Purple */
+            --accent: #06b6d4; /* Cyan */
+            --bg: #0b0f19;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: white;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
+            padding-bottom: 100px;
         }
 
+        /* Vidro Fosco Premium */
         .glass {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #22d3ee 100%);
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradientes de Texto */
+        .text-gradient {
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-item.active {
-            color: var(--primary);
-            background: rgba(99, 102, 241, 0.1);
-        }
-
-        .service-card:active {
-            transform: scale(0.95);
-        }
-
+        /* Luzes de Fundo (Blobs) */
         .blob {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            filter: blur(80px);
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            filter: blur(90px);
             border-radius: 50%;
+            opacity: 0.25;
             z-index: -1;
-            opacity: 0.4;
-            animation: pulse 10s infinite alternate;
+            animation: float 10s infinite alternate;
         }
 
-        @keyframes pulse {
-            from { transform: translate(0, 0); }
-            to { transform: translate(20px, 40px); }
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 50px); }
         }
 
-        /* Hide scrollbar */
-        ::-webkit-scrollbar { width: 0px; }
+        /* Player de Vídeo */
+        .video-card {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scrollbar oculta */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
         
-        .section-animate {
-            animation: slideUp 0.5s ease-out forwards;
+        .active-nav {
+            color: #818cf8;
+            transform: translateY(-2px);
         }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
         }
     </style>
 </head>
-<body class="pb-24">
+<body class="selection:bg-indigo-500 selection:text-white">
 
-    <!-- Blobs de Fundo -->
-    <div class="blob top-[-100px] left-[-100px]"></div>
-    <div class="blob bottom-[100px] right-[-100px]" style="background: var(--accent);"></div>
+    <!-- Luzes de Ambiente -->
+    <div class="blob top-[-100px] left-[-50px]"></div>
+    <div class="blob bottom-[10%] right-[-50px]" style="background: var(--accent);"></div>
 
-    <!-- Header / Status Bar Style -->
-    <header class="p-6 flex justify-between items-center sticky top-0 z-50 glass mb-4">
-        <div>
-            <h1 class="text-xl font-extrabold tracking-tight">NICOLAS<span class="text-indigo-500">.</span></h1>
-            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Disponível para Freelance</p>
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-40 p-5 flex justify-between items-center bg-gradient-to-b from-[#0b0f19] to-transparent">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-xl shadow-lg shadow-indigo-500/30">
+                N
+            </div>
+            <div>
+                <h1 class="font-bold text-lg leading-none">Nicolas</h1>
+                <p class="text-[10px] text-gray-400 font-medium tracking-wide">DESIGN & MOTION</p>
+            </div>
         </div>
-        <div class="flex gap-3">
-            <a href="https://wa.me/5511964482658" class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-semibold border border-green-500/30 flex items-center gap-2">
-                <i class="fab fa-whatsapp"></i> Online
-            </a>
-        </div>
+        <a href="https://wa.me/5511964482658" class="glass px-3 py-1.5 rounded-full text-xs font-semibold text-green-400 flex items-center gap-2 hover:bg-white/5 transition">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            Online
+        </a>
     </header>
 
-    <!-- Main Content Container -->
-    <main id="app-content" class="px-5 space-y-8">
-        
-        <!-- Home Screen -->
-        <section id="home" class="section-animate">
-            <div class="rounded-3xl overflow-hidden relative p-8 glass border-indigo-500/30">
-                <h2 class="text-4xl font-extrabold leading-tight mb-4">
-                    Transformo ideias em <span class="gradient-text">Impacto Visual.</span>
+    <main class="px-5 pt-24 space-y-10">
+
+        <!-- Showcase de Vídeo (CORRIGIDO PARA RETRATO) -->
+        <section id="inicio" class="animate-fade-in-up">
+            <div class="mb-4 text-center md:text-left">
+                <h2 class="text-3xl font-extrabold leading-tight">
+                    Eleve o nível do seu <span class="text-gradient">negócio digital.</span>
                 </h2>
-                <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                    Artes para posts, edição de vídeos, landing pages e soluções digitais com preço justo e qualidade profissional.
-                </p>
-                <div class="flex gap-3">
-                    <button onclick="navigate('services')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-500/20">
-                        Ver Serviços
-                    </button>
-                    <button onclick="navigate('prices')" class="glass px-6 py-3 rounded-2xl font-bold border border-white/10">
-                        Preços
-                    </button>
+                <p class="text-gray-400 text-sm mt-2">Motion Design, Edição e Sites de alta conversão.</p>
+            </div>
+
+            <!-- PLAYER VERTICAL (9:16) CENTRALIZADO -->
+            <div class="w-full flex justify-center md:justify-start">
+                <div class="video-card w-full max-w-[320px] aspect-[9/16] bg-black group relative mx-auto md:mx-0">
+                    <!-- Substitua 'seu-video.mp4' pelo arquivo real -->
+                    <video class="w-full h-full object-cover" controls playsinline poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop">
+                        <source src="seu-video.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos.
+                    </video>
+                    
+                    <!-- Badge Flutuante -->
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 text-[10px] font-bold tracking-widest uppercase">
+                        Showcase 2026
+                    </div>
                 </div>
             </div>
 
-            <!-- Stats Mini -->
-            <div class="grid grid-cols-2 gap-4 mt-6">
-                <div class="glass p-4 rounded-2xl text-center">
-                    <span class="block text-2xl font-bold gradient-text">100%</span>
-                    <span class="text-[10px] text-gray-400 uppercase">Foco no Cliente</span>
-                </div>
-                <div class="glass p-4 rounded-2xl text-center">
-                    <span class="block text-2xl font-bold gradient-text">24h</span>
-                    <span class="text-[10px] text-gray-400 uppercase">Suporte Rápido</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Screen (Hidden by default in JS logic if needed, but here simple flow) -->
-        <section id="services" class="space-y-4">
-            <h3 class="text-xl font-bold flex items-center gap-2">
-                <i class="fas fa-th-large text-indigo-500"></i> O que eu faço
-            </h3>
-            
-            <!-- Service Grid -->
-            <div class="grid grid-cols-1 gap-4">
-                <!-- Artes & Social Media -->
-                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg">Artes para Posts</h4>
-                        <p class="text-sm text-gray-400 mb-2">Designs criativos para Instagram, Facebook e LinkedIn.</p>
-                        <span class="text-xs font-bold text-indigo-400">A partir de R$ 25,00</span>
-                    </div>
-                </div>
-
-                <!-- Edição de Vídeo -->
-                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
-                    <div class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg">Edição de Vídeos</h4>
-                        <p class="text-sm text-gray-400 mb-2">Cortes para Reels, TikTok, YouTube e vídeos curtos.</p>
-                        <span class="text-xs font-bold text-purple-400">A partir de R$ 45,00</span>
-                    </div>
-                </div>
-
-                <!-- Landing Pages -->
-                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
-                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg">Landing Pages / Mini Apps</h4>
-                        <p class="text-sm text-gray-400 mb-2">Páginas de vendas ou apps web modernos em HTML/CSS.</p>
-                        <span class="text-xs font-bold text-cyan-400">A partir de R$ 150,00</span>
-                    </div>
-                </div>
-
-                <!-- Cardápios -->
-                <div class="service-card glass p-5 rounded-3xl border border-white/5 flex gap-4 items-start">
-                    <div class="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg">Cardápios Online</h4>
-                        <p class="text-sm text-gray-400 mb-2">Cardápios interativos e digitais para seu negócio.</p>
-                        <span class="text-xs font-bold text-orange-400">A partir de R$ 80,00</span>
-                    </div>
-                </div>
+            <div class="grid grid-cols-2 gap-3 mt-6">
+                <a href="#servicos" class="glass py-4 rounded-2xl text-center hover:bg-white/5 transition active:scale-95">
+                    <i class="fas fa-layer-group text-indigo-400 text-xl mb-1"></i>
+                    <p class="text-xs font-bold text-gray-300">Portfólio</p>
+                </a>
+                <a href="https://wa.me/5511964482658" class="bg-indigo-600 py-4 rounded-2xl text-center shadow-lg shadow-indigo-600/20 active:scale-95 transition">
+                    <i class="fab fa-whatsapp text-white text-xl mb-1"></i>
+                    <p class="text-xs font-bold">Orçamento</p>
+                </a>
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="prices" class="space-y-6 pt-4">
-            <h3 class="text-xl font-bold flex items-center gap-2">
-                <i class="fas fa-tags text-indigo-500"></i> Tabela de Preços (Acessíveis)
-            </h3>
+        <!-- Serviços -->
+        <section id="servicos">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold">O que eu faço</h3>
+                <span class="text-xs text-indigo-400 font-semibold">Ver todos</span>
+            </div>
+
             <div class="space-y-3">
-                <div class="flex justify-between items-center p-4 glass rounded-2xl">
-                    <span class="text-gray-300">Pack 5 Artes Social Media</span>
-                    <span class="font-bold text-green-400">R$ 100,00</span>
+                <!-- Card Serviço 1 -->
+                <div class="glass p-5 rounded-3xl flex items-start gap-4 hover:border-indigo-500/30 transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
+                        <i class="fas fa-video text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-base">Edição de Vídeo</h4>
+                        <p class="text-xs text-gray-400 mt-1 leading-relaxed">Reels, TikToks e vídeos institucionais com cortes dinâmicos e legendas.</p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded-md text-gray-300">CapCut</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded-md text-gray-300">Premiere</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex justify-between items-center p-4 glass rounded-2xl">
-                    <span class="text-gray-300">Edição de Vídeo (até 1min)</span>
-                    <span class="font-bold text-green-400">R$ 50,00</span>
+
+                <!-- Card Serviço 2 -->
+                <div class="glass p-5 rounded-3xl flex items-start gap-4 hover:border-purple-500/30 transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300">
+                        <i class="fas fa-laptop-code text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-base">Landing Pages</h4>
+                        <p class="text-xs text-gray-400 mt-1 leading-relaxed">Sites de página única focados em venda. Rápidos, bonitos e responsivos.</p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded-md text-gray-300">HTML5</span>
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded-md text-gray-300">CSS3</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex justify-between items-center p-4 glass rounded-2xl">
-                    <span class="text-gray-300">Página Única (Landing Page)</span>
-                    <span class="font-bold text-green-400">R$ 180,00</span>
-                </div>
-                <div class="flex justify-between items-center p-4 glass rounded-2xl">
-                    <span class="text-gray-300">Tratamento de Imagem (Un)</span>
-                    <span class="font-bold text-green-400">R$ 15,00</span>
+
+                <!-- Card Serviço 3 -->
+                <div class="glass p-5 rounded-3xl flex items-start gap-4 hover:border-cyan-500/30 transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-500 group-hover:text-white transition-colors duration-300">
+                        <i class="fas fa-paint-brush text-xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-base">Design & Artes</h4>
+                        <p class="text-xs text-gray-400 mt-1 leading-relaxed">Posts para redes sociais, cardápios digitais e tratamento de fotos.</p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <span class="text-[10px] bg-white/5 px-2 py-1 rounded-md text-gray-300">Social Media</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="pb-10">
-            <div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-8 rounded-[2.5rem] text-center shadow-2xl shadow-indigo-500/40">
+        <!-- Como Funciona -->
+        <section>
+            <h3 class="text-lg font-bold mb-4">Como funciona?</h3>
+            <div class="flex gap-4 overflow-x-auto pb-4 snap-x">
+                <div class="glass min-w-[200px] p-5 rounded-2xl snap-center border-l-4 border-indigo-500">
+                    <span class="text-4xl font-black text-white/10 absolute right-4 top-2">01</span>
+                    <h4 class="font-bold text-indigo-400 mb-1">Briefing</h4>
+                    <p class="text-xs text-gray-400">Você me conta sua ideia e o que precisa pelo WhatsApp.</p>
+                </div>
+                <div class="glass min-w-[200px] p-5 rounded-2xl snap-center border-l-4 border-purple-500">
+                    <span class="text-4xl font-black text-white/10 absolute right-4 top-2">02</span>
+                    <h4 class="font-bold text-purple-400 mb-1">Criação</h4>
+                    <p class="text-xs text-gray-400">Eu desenvolvo o projeto e te mando prévias.</p>
+                </div>
+                <div class="glass min-w-[200px] p-5 rounded-2xl snap-center border-l-4 border-cyan-500">
+                    <span class="text-4xl font-black text-white/10 absolute right-4 top-2">03</span>
+                    <h4 class="font-bold text-cyan-400 mb-1">Entrega</h4>
+                    <p class="text-xs text-gray-400">Aprovação final e envio dos arquivos em alta qualidade.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabela de Preços -->
+        <section id="precos">
+            <h3 class="text-lg font-bold mb-4">Investimento</h3>
+            <div class="glass rounded-3xl overflow-hidden divide-y divide-white/5">
+                <div class="p-4 flex justify-between items-center hover:bg-white/5 transition">
+                    <div>
+                        <p class="font-bold text-sm">Edição Short/Reels</p>
+                        <p class="text-[10px] text-gray-500">Até 1 minuto</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-bold text-green-400">R$ 50</span>
+                    </div>
+                </div>
+                <div class="p-4 flex justify-between items-center hover:bg-white/5 transition">
+                    <div>
+                        <p class="font-bold text-sm">Pack 5 Artes</p>
+                        <p class="text-[10px] text-gray-500">Para Instagram/Feed</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-bold text-green-400">R$ 100</span>
+                    </div>
+                </div>
+                <div class="p-4 flex justify-between items-center hover:bg-white/5 transition">
+                    <div>
+                        <p class="font-bold text-sm">Landing Page</p>
+                        <p class="text-[10px] text-gray-500">Site One-Page</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block font-bold text-green-400">R$ 180</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <h3 class="text-lg font-bold mb-4">Dúvidas?</h3>
+            <div class="space-y-2">
+                <details class="glass rounded-2xl group">
+                    <summary class="p-4 font-semibold text-sm cursor-pointer flex justify-between items-center">
+                        Como é o pagamento?
+                        <i class="fas fa-chevron-down text-gray-500 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400 leading-relaxed">
+                        Aceito Pix. Para valores menores (até R$ 50), o pagamento é antecipado. Para projetos maiores, 50% no início e 50% na entrega.
+                    </div>
+                </details>
+                <details class="glass rounded-2xl group">
+                    <summary class="p-4 font-semibold text-sm cursor-pointer flex justify-between items-center">
+                        Qual o prazo de entrega?
+                        <i class="fas fa-chevron-down text-gray-500 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-4 pb-4 text-xs text-gray-400 leading-relaxed">
+                        Artes e vídeos simples geralmente são entregues em até 24h a 48h. Sites levam de 3 a 5 dias.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Barra de Navegação Flutuante -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm glass-nav rounded-2xl p-2 z-50 flex justify-between items-center shadow-2xl shadow-black/50">
+        <a href="#inicio" class="flex-1 flex flex-col items-center py-2 text-gray-500 hover:text-white transition active-nav">
+            <i class="fas fa-home text-lg mb-1"></i>
+            <span class="text-[10px] font-medium">Início</span>
+        </a>
+        <a href="#servicos" class="flex-1 flex flex-col items-center py-2 text-gray-500 hover:text-white transition">
+            <i class="fas fa-cubes text-lg mb-1"></i>
+            <span class="text-[10px] font-medium">Serviços</span>
+        </a>
+        <a href="#precos" class="flex-1 flex flex-col items-center py-2 text-gray-500 hover:text-white transition">
+            <i class="fas fa-tag text-lg mb-1"></i>
+            <span class="text-[10px] font-medium">Preços</span>
+        </a>
+        <a href="https://wa.me/5511964482658" class="flex-1 flex flex-col items-center py-2 text-green-400 hover:text-green-300 transition">
+            <i class="fab fa-whatsapp text-xl mb-1"></i>
+            <span class="text-[10px] font-medium">Whats</span>
+        </a>
+    </nav>
+
+    <script>
+        // Smooth Scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Highlight na nav baseado no scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav', 'text-indigo-400');
+                link.classList.add('text-gray-500');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-nav', 'text-indigo-400');
+                    link.classList.remove('text-gray-500');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+ndigo-600 to-purple-700 p-8 rounded-[2.5rem] text-center shadow-2xl shadow-indigo-500/40">
                 <h3 class="text-2xl font-bold mb-2">Bora fechar um projeto?</h3>
                 <p class="text-white/80 text-sm mb-6">Resposta em menos de 30 minutos via WhatsApp.</p>
                 <a href="https://wa.me/5511964482658" class="bg-white text-indigo-600 px-8 py-4 rounded-2xl font-extrabold flex items-center justify-center gap-2 mx-auto hover:scale-105 transition-transform">
